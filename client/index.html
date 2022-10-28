@@ -9,12 +9,19 @@
   </head>
   <body>
     <!-- This is where library is injected -->
-    <div id="root"/>
+    <div id="root"></div>
+    
+    <!-- Babel.js library -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    asas
+    <!-- React.js library -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script> 
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 
-    <!-- UI library -->
+    <!-- Eggplant.js library -->
     <script src="eggplant.js"></script>
-
+  
+    <!-- app code -->
+    <script type="text/babel" src="app.js"></script>
   </body>
 </html>

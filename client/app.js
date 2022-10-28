@@ -1,8 +1,8 @@
 function App() {
-  //   const [isPressed, setIsPressed] = React.useState(false)
+  const [counterValue, setCounterValue] = React.useState(0)
 
   function handlePressed() {
-    setIsPressed(true)
+    setCounterValue(counterValue + 1)
   }
 
   return (
@@ -10,21 +10,22 @@ function App() {
       <h2>
         When you press it increments the counter to next state in React's store
       </h2>
-      <button>Increment</button>
+      <button onClick={handlePressed}>Increment</button>
       <span>
         <br />
         <marquee>Counter value</marquee>
         <br />
-        <h1>9</h1>
+        <h1>{counterValue}</h1>
       </span>
     </div>
   )
 }
 
-// Print out React
+// Print out React library
 // console.log(window.React);
 // console.log(ReactDOM);
 
 /************* Render into DOM ****************/
-const rootElement = document.getElementById('root')
-ReactDOM.render(App(), rootElement)
+const rootNode = document.getElementById('root')
+const element = <App />
+ReactDOM.render(element, rootNode)

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "author": "",
   "license": "MIT",
@@ -27,7 +29,12 @@
     },
     "ext": "js,json,css,html"
   },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "devDependencies": {
+    "jest": "^29.2.2",
+    "jest-environment-jsdom": "^29.2.2",
     "nodemon": "^2.0.20"
   },
   "dependencies": {

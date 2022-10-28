@@ -10,13 +10,8 @@ function App() {
       <h2>
         When you press it increments the counter to next state in React's store
       </h2>
-      <button onClick={handlePressed}>Increment</button>
-      <span>
-        <br />
-        <marquee>Counter value</marquee>
-        <br />
-        <h1>{counterValue}</h1>
-      </span>
+      <button onClick={(handlePressed)}>Increment</button>
+      <h1>{counterValue || 0}</h1>
     </div>
   )
 }
@@ -28,4 +23,4 @@ function App() {
 /************* Render into DOM ****************/
 const rootNode = document.getElementById('root')
 const element = <App />
-ReactDOM.render(element, rootNode)
+ReactDOM.render(App(), rootNode)

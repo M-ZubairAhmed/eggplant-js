@@ -35,20 +35,15 @@ button {
   padding: 20px;
   font-size: 30px;
   font-weight: 600;
-  box-shadow: rgb(98, 0, 255) -2px -2px 0px 2px,
-    rgb(0, 255, 149) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
-  transition: all 0.3s;
+  box-shadow: rgb(94, 94, 94) -2px -2px 0px 2px,
+    rgb(105, 108, 107) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+  transition: all 0.3s ease-in-out;
 }
 
 button:hover {
-  background-color: rgb(216, 192, 255);
-  transform: scale(1.1) rotate(-5deg);
-}
-
-span {
-  height: 10rem;
-  width: 10rem;
-  box-shadow: -10px -8px 0px rgb(167 243 208);
+  box-shadow: none;
+  background-color: rgb(255, 255, 255);
+  transform: scale(1.01);
 }
 
 h3 {
@@ -56,4 +51,23 @@ h3 {
   font-size: 20px;
   font-weight: 600;
   color: rgb(55, 55, 55);
+}
+
+h1 {
+  width: 5rem;
+  height: 5rem;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  border-radius: 50%;
+  box-shadow: 7px 7px 15px #bbcfda,-4px -4px 13px #fff, inset 4px 4px 8px rgba(209, 217, 230, 0.2),  inset -8px -8px 8px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  background: #e8eff5;
+  transition: all 0.3s ease-in-out;
+}
+
+h1:hover {
+  cursor: default;
 }

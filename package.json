@@ -1,15 +1,15 @@
 {
-  "name": "eggplant",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "eggplant-js",
+  "version": "0.1.0",
+  "description": "A use in production and get fired implementation of React",
+  "main": "lib/eggplant.production.min.js",
   "scripts": {
     "dev": "nodemon server.js",
     "build": "uglifyjs -c -m --output lib/eggplant.production.min.js   -- lib/eggplant.development.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
-  "author": "",
+  "author": "m-zubairahmed",
   "license": "MIT",
   "nodemonConfig": {
     "restartable": "rs",

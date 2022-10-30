@@ -22,6 +22,7 @@ body {
 
 button {
   display: inline-block;
+  width: 10rem;
   outline: 0;
   border: 0;
   cursor: pointer;
@@ -54,20 +55,21 @@ p {
 }
 
 .counter {
-  width: 5rem;
+  width: 15rem;
   height: 5rem;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  border-radius: 50%;
+  border-radius: 10px;
   box-shadow: 7px 7px 15px #bbcfda,-4px -4px 13px #fff, inset 4px 4px 8px rgba(209, 217, 230, 0.2),  inset -8px -8px 8px rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3); 
   background: #e8eff5;
   transition: all 0.3s ease-in-out;
 }
 
-h1:hover {
-  cursor: default;
+.button-wrap{
+  display: flex;
+  gap: 2rem;
 }

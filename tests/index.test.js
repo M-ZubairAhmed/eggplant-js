@@ -135,20 +135,6 @@ describe('paintDom', () => {
       '<div id="root"><div class="container"></div></div>'
     )
   })
-
-  test('renders a div element with property and a child div element', () => {
-    const childElement = createElement('div', { className: 'child' })
-    const element = createElement(
-      'div',
-      { className: 'container' },
-      childElement
-    )
-    paintDom(element, rootContainer)
-
-    expect(document.body.innerHTML).toBe(
-      '<div id="root"><div class="container"><div class="child"></div></div></div>'
-    )
-  })
 })
 
 describe('addToQue', () => {
@@ -179,4 +165,22 @@ describe('addToQue', () => {
 
     expect(addToQue(item, que).que).toEqual(['b', 'c'])
   })
+})
+
+describe('useState', () => {
+  test('should return null when no initial value is passed', () => {
+    jest.clearAllMocks();
+    expect(useState()).toEqual([null, expect.any(Function)])
+  })
+
+  test('should return initial value and set state function', () => {
+    expect(useState('a')).toEqual(['a', expect.any(Function)])
+  })
+
+  test('should update the state to new value', () => {
+    const [state, setState] = useState('a')
+    setState('b')
+    expect(setState('b')).toBe('b')
+  })
+
 })

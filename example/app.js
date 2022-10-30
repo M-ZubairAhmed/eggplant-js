@@ -1,23 +1,26 @@
 /************* Sample app ****************/
 function App() {
-  const [counterValue, setCounterValue] = React.useState(0)
+  const [name, setName] = React.useState('✈️')
 
-  function handlePressed() {
-    setCounterValue(counterValue + 1)
+  function handleAddName() {
+    setName('🛫')
+  }
+
+  function clearName() {
+    setName('🛬')
   }
 
   return (
     <div className="container">
       <p>eggplant.js</p>
-      <button onClick={handlePressed}>Increment</button>
-      <div className="counter">{counterValue}</div>
+      <div className="button-wrap">
+      <button onClick={handleAddName}>Departure</button>
+      <button onClick={clearName}>Arrival</button>
+      </div>
+      <div className="counter">{name}</div>
     </div>
   )
 }
-
-// Print out library
-// console.log(window.React);
-// console.log(ReactDOM);
 
 /************* Render into DOM ****************/
 const rootNode = document.getElementById('root')

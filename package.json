@@ -4,7 +4,7 @@
   "description": "A use in production and get fired implementation of React",
   "main": "lib/eggplant.production.min.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon example/index.js",
     "build": "uglifyjs -c -m --output lib/eggplant.production.min.js   -- lib/eggplant.development.js",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -22,8 +22,8 @@
       "js": "node --harmony"
     },
     "watch": [
-      "server.js",
-      "client/"
+      "lib/eggplant.development.js",
+      "example/"
     ],
     "env": {
       "NODE_ENV": "development"

@@ -1,11 +1,18 @@
-const {
-  createElement,
-  createElementText,
-  TEXT_ELEMENT,
-  render
-} = require('./eggplant')
+require('../lib/eggplant.development.js')
+
+const createElement = window.React.createElement
+const ELEMENT_TYPE_TEXT = window.React.__internal__.ELEMENT_TYPE_TEXT
+const createElementText = window.React.__internal__.createElementText
+const render = window.ReactDOM.render
 
 describe('createElement', () => {
+  let consoleErrorSpy;
+  
+  beforeEach(() => {
+    jest.clearAllMocks();
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
   test('creates an object with a type, props and children', () => {
     expect(createElement('h1', null)).toEqual({
       type: 'h1',
@@ -28,7 +35,7 @@ describe('createElement', () => {
       props: {
         children: [
           {
-            type: TEXT_ELEMENT,
+            type: ELEMENT_TYPE_TEXT,
             props: {
               nodeValue: 'Hello World',
               children: []
@@ -37,13 +44,35 @@ describe('createElement', () => {
         ]
       }
     })
+
+    expect(createElement(jest.fn(), null)).toEqual({
+      type: expect.any(Function),
+      props: {
+        children: []
+      }
+    })
+  })
+
+  test('should throw when undefined as type is passed', () => {
+    createElement(undefined, null)
+    expect(consoleErrorSpy).toHaveBeenCalled();
+  })
+
+  test('should throw when null as type is passed', () => {
+    createElement(null, null)
+    expect(consoleErrorSpy).toHaveBeenCalled();
+  })
+
+  test('should throw when number as type is passed', () => {
+    createElement(1, null)
+    expect(consoleErrorSpy).toHaveBeenCalled();
   })
 })
 
 describe('createElementText', () => {
   test('create an object with text type', () => {
     expect(createElementText('Hello World')).toEqual({
-      type: TEXT_ELEMENT,
+      type: ELEMENT_TYPE_TEXT,
       props: {
         nodeValue: 'Hello World',
         children: []
@@ -83,7 +112,7 @@ describe('render', () => {
   })
 
   test('renders a div element with property and a child div element', () => {
-    const childElement = createElement('h5', { className: 'child' })
+    const childElement = createElement('div', { className: 'child' })
     const element = createElement(
       'div',
       { className: 'container' },
@@ -92,17 +121,26 @@ describe('render', () => {
     render(element, rootContainer)
 
     expect(document.body.innerHTML).toBe(
-      '<div id="root"><div class="container"><h5 class="child"></h5></div></div>'
+      '<div id="root"><div class="container"><div class="child"></div></div></div>'
     )
   })
 
+  test('throw error when invalid element is supplied as container', () => {
+    const element = createElement('h1', null)
+    const invalidContainer = document.createElement('h1')
+
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+
+    render(element, invalidContainer)
+
+    expect(consoleErrorSpy).toHaveBeenCalled();
+  })
+
   test('render a div with onclick property', () => {
-    const element = createElement('div', {onClick: jest.fn()})
+    const element = createElement('div', { onClick: jest.fn() })
     render(element, rootContainer)
 
     // because onClick is not a valid element property something which should be handled by library
-    expect(document.body.innerHTML).toBe(
-        '<div id="root"><div></div></div>'
-    )
+    expect(document.body.innerHTML).toBe('<div id="root"><div></div></div>')
   })
 })

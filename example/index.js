@@ -1,4 +1,3 @@
-
 const express = require('express')
 const static = require('express').static
 const path = require('path')
@@ -8,9 +7,8 @@ let app = express()
 const port = process.env.PORT || 3232
 app.set('port', port)
 
-
-const clientPath = path.join(__dirname, 'client')
-const libPath = path.join(__dirname, 'lib')
+const clientPath = path.join(__dirname)
+const libPath = path.join(__dirname, '../lib')
 app.use(static(clientPath))
 app.use(static(libPath))
 

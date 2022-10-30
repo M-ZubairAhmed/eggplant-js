@@ -1,3 +1,4 @@
+/************* Sample app ****************/
 function App() {
   const [counterValue, setCounterValue] = React.useState(0)
 
@@ -7,20 +8,18 @@ function App() {
 
   return (
     <div className="container">
-      <h2>
-        When you press it increments the counter to next state in React's store
-      </h2>
-      <button onClick={(handlePressed)}>Increment</button>
-      <h1>{counterValue || 0}</h1>
+      <p>eggplant.js</p>
+      <button onClick={handlePressed}>Increment</button>
+      <div className="counter">{counterValue || 0}</div>
     </div>
   )
 }
 
-// Print out React library
+// Print out library
 // console.log(window.React);
 // console.log(ReactDOM);
 
 /************* Render into DOM ****************/
 const rootNode = document.getElementById('root')
 const element = <App />
-ReactDOM.render(App(), rootNode)
+ReactDOM.render(element, rootNode)

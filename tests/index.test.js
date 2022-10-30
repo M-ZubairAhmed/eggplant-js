@@ -7,7 +7,7 @@ const render = window.ReactDOM.render
 const ELEMENT_TYPE_TEXT = window.__internal__.ELEMENT_TYPE_TEXT
 const createElementText = window.__internal__.createElementText
 const addToQue = window.__internal__.addToQue
-const startInitialPaint = window.__internal__.startInitialPaint
+const paintDom = window.__internal__.paintDom
 
 let consoleErrorSpy
 
@@ -103,7 +103,7 @@ describe('render', () => {
   })
 })
 
-describe('startInitialPaint', () => {
+describe('paintDom', () => {
   let rootContainer
 
   beforeEach(() => {
@@ -122,14 +122,14 @@ describe('startInitialPaint', () => {
 
   test('renders a text element', () => {
     const element = createElementText('Hello World')
-    startInitialPaint(element, rootContainer)
+    paintDom(element, rootContainer)
 
     expect(document.body.innerHTML).toBe('<div id="root">Hello World</div>')
   })
 
   test('renders a div element with property', () => {
     const element = createElement('div', { className: 'container' })
-    startInitialPaint(element, rootContainer)
+    paintDom(element, rootContainer)
 
     expect(document.body.innerHTML).toBe(
       '<div id="root"><div class="container"></div></div>'
@@ -143,7 +143,7 @@ describe('startInitialPaint', () => {
       { className: 'container' },
       childElement
     )
-    startInitialPaint(element, rootContainer)
+    paintDom(element, rootContainer)
 
     expect(document.body.innerHTML).toBe(
       '<div id="root"><div class="container"><div class="child"></div></div></div>'

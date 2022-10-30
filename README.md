@@ -8,6 +8,7 @@
    - `React.useState`
    - `ReactDOM.render`
 1. Reconciler rendering of only effected nodes.
+1. Size **2.3 kB**
 1. Virtual DOM diffing.
 1. Updates the DOM only when the virtual DOM changes.
 1. Incremental updates of the DOM.
